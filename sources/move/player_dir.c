@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 21:19:06 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/07 21:37:38 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/08 20:51:00 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static void init_player_east_west(t_player *player)
 	else
 		return ;
 }
-
 
 void	init_player_direction(t_data *data)
 {

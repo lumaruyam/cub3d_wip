@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 20:22:05 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/07 21:09:30 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/08 21:18:26 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static int	parse_args(t_data *data, char **av)
 		return (free_data(data)); //parsing
 	if (valid_map(data, data->map) == FAILURE)
 		return (free_data(data));
-	if (valid_texture(data, &data->textinfo) == FAILURE) //exec
+	if (valid_texture(data, &data->textinfo) == FAILURE) //parsing
 		return (free_data(data));
-	init_player_direction(data);
+	init_player_direction(data);//exec->DONE
 	if (DEBUG_MSG)
 		debug_display_data(data); // exec
 	return (0);
@@ -38,10 +38,10 @@ int	main(int ac, char **av)
 	init_data(&data); // parsing
 	if (parse_args(&data, av) != 0);
 		return (1);
-	init_mlx(&data); // exec
+	init_mlx(&data); // parsing
 	init_textures(&data);  //exec
 	render_images(&data); // exec
-	listen_for_input(&data); // ?
+	listen_for_input(&data); // exec->DONE
 	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);
 	return (0);
