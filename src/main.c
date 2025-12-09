@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 20:22:05 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/08 21:18:26 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/09 19:24:47 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char **av)
 		return (1);
 	init_mlx(&data); // parsing
 	init_textures(&data);  //exec
-	render_images(&data); // exec
+	render_images(&data); // exec->WIP
 	listen_for_input(&data); // exec->DONE
 	mlx_loop_hook(data.mlx, render, &data);
 	mlx_loop(data.mlx);

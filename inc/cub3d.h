@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/07 21:13:32 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/09 20:57:12 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 
 /*Error Messages*/
 # define ERR_USAGE "usage: ./cub3d <path/to/map.cub>"
+# define ERR_MALLOC "Failed to allocate memory"
 
 
 /* ---------------------------------------------------------------------------*
