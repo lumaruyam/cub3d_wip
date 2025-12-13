@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:11:41 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/13 21:46:22 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/13 22:48:04 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,24 @@ static void	peform_dda(t_data *data, t_ray *ray)
 	while (hit == 0)
 	{
 		if (ray->sidedist_x < ray->sidedist_y)
+		{
+			ray->sidedist_x += ray->deltadist_x;
+			ray->map_x += ray->step_x;
+			ray->side = 0;
+		}
+		else
+		{
+			ray->sidedist_y += ray->deltadist_y;
+			ray->map_y += ray->step_y;
+			ray->side = 1;
+		}
+		if (ray->map_y < 0.25
+			|| ray->map_x < 0.25
+			|| ray->map_y > data->mapinfo.height - 0.25
+			|| ray->map_x > data->mapinfo.width - 1.25)
+			break ;
+		else if (data->map[ray->map_y][ray->map_x] > '0')
+			hit = 1;
 	}
 }
 
