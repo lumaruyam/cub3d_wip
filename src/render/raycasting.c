@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:11:41 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/13 22:48:04 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/14 19:18:51 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,26 @@ static void	peform_dda(t_data *data, t_ray *ray)
 	}
 }
 
+static void calc_line_height(t_ray *ray, vt_data *data, t_player *player)
+{
+	if (ray->side == 0)
+		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
+	else
+		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
+	ray->line_height = (int)(deta->win_height / ray->wall_dist);
+	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = ray->line_height / 2 + data->win_height / 2;
+	if (ray->draw_end >= data->win_height)
+		ray->draw_end = data->win_height - 1;
+	if (ray->side == 0)
+		ray->wall_x = player->pos_y + ray->wall_dist * ray->dir_y;
+	else
+		ray->wall_x = player->pos_x + ray->wall_dist * ray->dir_x;
+	ray->wall_x -= floor(ray->wall_x);
+}
+
 int	raycasting(t_player *player, t_data *data)
 {
 	t_ray	ray;
@@ -89,5 +109,9 @@ int	raycasting(t_player *player, t_data *data)
 		init_raycasting(x, &ray, player);
 		set_dda(&ray, player);
 		perform_dda(data, &ray);
+		calc_line_height(&ray, data, player);
+		update_texture_pixels(data, &data->textinfo, &ray, x);//WIP 1214
+		x++;
 	}
+	return (SUCCESS);
 }
