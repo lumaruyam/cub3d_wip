@@ -6,11 +6,20 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:06:25 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/09 21:10:50 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/15 19:34:02 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	init_img(t_img *img)
+{
+	img->img = NULL;
+	img->addr = NULL;
+	img->pixel_bits = 0;
+	img_size_line = 0;
+	img->endian = 0;
+}
 
 void	init_ray(t_ray *ray)
 {
