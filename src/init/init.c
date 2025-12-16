@@ -6,13 +6,13 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:06:25 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/15 19:34:02 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/16 19:45:03 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_img(t_img *img)
+void	init_img_clean(t_img *img)
 {
 	img->img = NULL;
 	img->addr = NULL;
