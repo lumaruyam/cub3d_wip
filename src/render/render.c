@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:25:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/16 20:16:33 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/18 19:42:18 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,12 @@ void	render_images(t_data *data)
 	init_texture_pixels(data);//done
 	init_ray(&data->ray);//done
 	raycasting(&data->player, data);//done
-	render_frame(data);
+	render_frame(data);//done
 	// if (BONUS) // do later
 	// 	render_minimap(data);
+}
+
+int	render(t_data *data)
+{
+	data->player.has_moved += move_player(data);//1218 WIP
 }

@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/15 19:37:26 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/18 19:52:00 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,14 @@
  --------------------------------------------------------------------------- */
 
 # ifndef DEBUG_MSG
-# define DEBUG_MSG
+# define DEBUG_MSG 0
 # endif
 
+// # ifndef BONUS Uncomment here when we added bonus
+// # define BONUS 1
+// # endif
+
+# define MOVESPEED 0.0125
 
 /*Error Messages*/
 # define ERR_USAGE "usage: ./cub3d <path/to/map.cub>"
