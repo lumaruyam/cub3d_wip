@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:28:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/14 19:24:45 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:49:47 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,23 @@ void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 	int	color;
 
 	get_texture_index(data, ray);
-	//WIP 1214
+	tex->x = (int)(ray->wall_x * tex->size);
+	if ((ray->side == 0 && ray->dir_y > 0)
+		|| (ray->side == 1 && ray->dir_y > 0))
+		tex->x = tex->size - tex->x - 1;
+	tex->step = 1.0 * tex->size / ray->line_height;
+	tex->pos = (1.0 * tex->size - ray->line_height / 2
+		+ ray->line_height / 2) * tex->step;
+	y = ray->draw_start;
+	while (y < ray->draw_end)
+	{
+		tex->y = (int)tex->pos & (tex->size - 1);
+		tex->pos += tex->step;
+		color = data->textures[tex->index][tex->size * tex->y + tex->x];
+		if (tex->index == NORTH || tex->index == EAST)
+			color = (color >> 1) & 8355711;
+		if (color > 0)
+			data->texture_pixels[y][x] = color;
+		y++;
+	}
 }

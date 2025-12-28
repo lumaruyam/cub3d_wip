@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:25:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/18 19:42:18 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:04:01 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	render_frame(t_data *data)
 		x = 0;
 		while (x < data->width)
 		{
-			set_frame_pixel(data, &image, x, y);
+			set_frame_image_pixel(data, &image, x, y);
 			x++;
 		}
 		y++;
@@ -55,15 +55,19 @@ static void	render_frame(t_data *data)
 
 void	render_images(t_data *data)
 {
-	init_texture_pixels(data);//done
-	init_ray(&data->ray);//done
-	raycasting(&data->player, data);//done
-	render_frame(data);//done
+	init_texture_pixels(data);
+	init_ray(&data->ray);
+	raycasting(&data->player, data);
+	render_frame(data);
 	// if (BONUS) // do later
 	// 	render_minimap(data);
 }
 
 int	render(t_data *data)
 {
-	data->player.has_moved += move_player(data);//1218 WIP
+	data->player.has_moved += move_player(data);
+	if (data->player.has_moved == 0)
+		return (0);
+	render_images(data)
+	return (0);
 }

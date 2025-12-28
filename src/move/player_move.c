@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 19:43:08 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/18 20:53:28 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/28 17:12:31 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,6 @@ int	move_player(t_data *data)
 	if (data->player.move_x == 1)
 		moved += move_player_right(data);
 	if (data->player.rotate != 0)
-		moved += rotate_player(data, data->player.rotate);//1218 WIP
+		moved += rotate_player(data, data->player.rotate);
 	return (moved);
 }
