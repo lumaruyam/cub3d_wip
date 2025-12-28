@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/18 19:52:00 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2025/12/28 18:54:05 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,18 @@
 // # define BONUS 1
 // # endif
 
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
+
 # define MOVESPEED 0.0125
+# define ROTSPEED 0.015
 
 /*Error Messages*/
 # define ERR_USAGE "usage: ./cub3d <path/to/map.cub>"
 # define ERR_MALLOC "Failed to allocate memory"
-
-# define ERR_MLX_IMG "Could not create mlx image"
+# define ERR_MLX_START "Failed to start mlx"
+# define ERR_MLX_WIN "Failed to create mlx window"
+# define ERR_MLX_IMG "Failed to create mlx image"
 
 
 /* ---------------------------------------------------------------------------*

@@ -1,7 +1,9 @@
 
 NAME = cub3d
 
-CC = CC
+BONUS = 0
+
+CC = gcc
 CFLAGS = -Werror -Wextra -Wall -g3
 
 # Minilibx
