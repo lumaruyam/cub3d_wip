@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 20:48:36 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/09 20:53:51 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/09 19:57:52 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-void	*ft_calloc(size_t ct, size_tb size)
+void	*ft_calloc(size_t ct, size_t size)
 {
 	void	*res;
 

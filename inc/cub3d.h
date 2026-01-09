@@ -6,17 +6,17 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/28 18:54:05 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:08:06 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef CUB3D_H
+#ifndef CUB3D_H
 # define CUB3D_H
 
 # include "libft.h"
 # include "mlx.h"
 # include <errno.h>
-# include <fctnl.h>
+# include <fcntl.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
@@ -53,6 +53,15 @@
 # define ERR_MLX_START "Failed to start mlx"
 # define ERR_MLX_WIN "Failed to create mlx window"
 # define ERR_MLX_IMG "Failed to create mlx image"
+
+enum	e_output
+{
+	SUCCESS = 0,
+	FAILURE = 1,
+	ERR = 2,
+	BREAK = 3,
+	CONTINUE = 4
+};
 
 
 /* ---------------------------------------------------------------------------*
@@ -106,7 +115,7 @@ typedef struct	s_mapinfo
 	int		height;
 	int		width;
 	int		index_end_of_map;
-}	t_mapinfo
+}	t_mapinfo;
 
 typedef struct	s_ray
 {
@@ -156,9 +165,59 @@ typedef struct	s_data
 	t_ray		ray;
 	int			**texture_pixels;
 	int			**textures;
-	t_texinfo	texinfo;
+	t_textinfo	textinfo;
 	t_img		minimap;
 }	t_data;
 
+/* ---------------------------------------------------------------------------*
+								FUNCTIONS
+ --------------------------------------------------------------------------- */
+
+/*init*/
+void	init_ray(t_ray *ray);
+void	init_img_clean(t_img *img);
+
+void	init_textures(t_data *data);
+
+void	init_mlx(t_data *data);
+void	init_texture_img(t_data *data, t_img *image, char *path);
+void	init_img(t_data *data, t_img *image, int width, int height);
+
+/*render*/
+int		render(t_data *data);
+void	render_images(t_data *data);
+void	set_image_pixel(t_img *image, int x, int y, int color);
+
+/*render/texture*/
+void	update_texture_pixels(t_data *data, t_textinfo *tex, t_ray *ray, int x);
+void	init_texture_pixels(t_data *data);
+
+/*render/raycasting*/
+int		raycasting(t_player *player, t_data *data);
+
+/*move*/
+int		validate_move(t_data *data, double new_x, double new_y);
+void	init_player_direction(t_data *data);
+int		move_player(t_data *data);
+int		rotate_player(t_data *data, double rotdir);
+
+/*input handler*/
+void	listen_for_input(t_data *data);
+
+/*exit*/
+int		quit_cub3d(t_data *data);
+void	clean_exit(t_data *data, int code);
+
+/*free data*/
+int		free_data(t_data *data);
+void	free_tab(void **tab);
+
+/*error*/
+int		err_msg(char *detail, char *str, int code);
+int		err_msg_val(int detail, char *str, int code);
+
+/*utils*/
+void	*ft_calloc(size_t ct, size_t size);
+void	ft_bzero(void *s, size_t n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:28:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/28 17:49:47 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/09 20:06:13 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	get_textutre_index(t_data *data, t_ray *ray)
 	}
 }
 
-void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
+void	update_texture_pixels(t_data *data, t_textinfo *tex, t_ray *ray, int x)
 {
 	int	y;
 	int	color;
