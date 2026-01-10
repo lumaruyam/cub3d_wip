@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 20:25:51 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/07 20:35:52 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:08:54 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	err_msg(char *detail, char *str, int code)
 int	err_msg_val(int detail, char *str, int code)
 {
 	ft_putstr_fd(RED "cub3D: Error: ", 2);
-	ft_putstr_fd(detail, 2);
+	ft_putnbr_fd(detail, 2);
 	ft_putstr_fd(": ", 2);
 	ft_putstr_fd(str, 2);
 	ft_putstr_fd("\n" RESET, 2);

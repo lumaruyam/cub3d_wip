@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:11:41 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/28 17:52:00 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:17:11 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	init_raycasting(int x, t_ray *ray, t_player *player)
 {
-	init_ray(ray);//do we need while we do it at render.c
+	init_ray(ray);
 	ray->camera_x = 2 * x / (double)WIN_WIDTH -1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
@@ -29,26 +29,26 @@ static void	set_dda(t_ray *ray, t_player *player)
 	if (ray->dir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->sidedist_x = (player->pos_x - ray->mapp_x) * ray->deltadist_x;
+		ray->sidedist_x = (player->pos_x - ray->map_x) * ray->deltadist_x;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedist_x = (player->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
+		ray->sidedist_x = (ray->map_x + 1.0 - player->pos_x) * ray->deltadist_x;
 	}
 	if (ray->dir_y < 0)
 	{
 		ray->step_y = -1;
 		ray->sidedist_y = (player->pos_y - ray->map_y) * ray->deltadist_y;
 	}
-	else (ray->dir_y < 0)
+	else
 	{
 		ray->step_y = 1;
-		ray->sidedist_y = (player->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
+		ray->sidedist_y = (ray->map_y + 1.0 - player->pos_y) * ray->deltadist_y;
 	}
 }
 
-static void	peform_dda(t_data *data, t_ray *ray)
+static void	perform_dda(t_data *data, t_ray *ray)
 {
 	int	hit;
 
@@ -77,13 +77,13 @@ static void	peform_dda(t_data *data, t_ray *ray)
 	}
 }
 
-static void calc_line_height(t_ray *ray, vt_data *data, t_player *player)
+static void	calc_line_height(t_ray *ray, t_data *data, t_player *player)
 {
 	if (ray->side == 0)
 		ray->wall_dist = (ray->sidedist_x - ray->deltadist_x);
 	else
 		ray->wall_dist = (ray->sidedist_y - ray->deltadist_y);
-	ray->line_height = (int)(deta->win_height / ray->wall_dist);
+	ray->line_height = (int)(data->win_height / ray->wall_dist);
 	ray->draw_start = -(ray->line_height) / 2 + data->win_height / 2;
 	if (ray->draw_start < 0)
 		ray->draw_start = 0;

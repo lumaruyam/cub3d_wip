@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 20:02:56 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/18 20:35:35 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 15:08:41 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@ int	validate_move(t_data *data, double new_x, double new_y)
 	if (is_valid_pos(data, new_x, data->player.pos_y))
 	{
 		data->player.pos_x = new_x;
-		move = 1;
+		moved = 1;
 	}
 	if (is_valid_pos(data, data->player.pos_x, new_y))
 	{
-		data->player_y = new_y;
+		data->player.pos_y = new_y;
 		moved = 1;
 	}
 	return (moved);

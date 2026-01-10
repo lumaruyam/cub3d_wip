@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:06:25 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/16 19:45:03 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 15:01:31 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_img_clean(t_img *img)
 	img->img = NULL;
 	img->addr = NULL;
 	img->pixel_bits = 0;
-	img_size_line = 0;
+	img->size_line = 0;
 	img->endian = 0;
 }
 

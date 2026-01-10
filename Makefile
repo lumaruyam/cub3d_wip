@@ -19,10 +19,10 @@ LIBFT = $(LIBFT_PATH)$(LIBFT_NAME)
 
 SRC_PATH = ./src/
 SRC =	init/init_mlx.c init/init_textures.c init/init.c \
-		move/input_handler.c move/palyer_dir.c move/player_move.c move/player_pos.c move_player_rotate.c \
+		move/input_handler.c move/player_dir.c move/player_move.c move/player_pos.c move/player_rotate.c \
 		render/raycasting.c render/render.c render/texture.c \
 		exit/exit.c exit/free_data.c \
-		main.c error.c utils.c
+		error.c utils.c main.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 
 OBJ_PATH = ./obj/
@@ -42,9 +42,10 @@ $(NAME): $(OBJS)
 
 $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
+	mkdir -p $(dir $(OBJS))
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
+	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 # 	$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
 
 $(LIBFT):

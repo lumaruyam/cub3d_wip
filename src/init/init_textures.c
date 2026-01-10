@@ -6,13 +6,13 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 19:37:58 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/15 19:48:36 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:12:18 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static int	*xpm_to_img(t_data, *data, char *path)
+static int	*xpm_to_img(t_data *data, char *path)
 {
 	t_img	tmp;
 	int		*buffer;
@@ -21,9 +21,9 @@ static int	*xpm_to_img(t_data, *data, char *path)
 
 	init_texture_img(data, &tmp, path);
 	buffer = ft_calloc(1,
-		sizeof * buffer * data->textinfo.size * data->textinfo.size);
+			sizeof * buffer * data->textinfo.size * data->textinfo.size);
 	if (buffer)
-		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));;
+		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	y = 0;
 	while (y < data->textinfo.size)
 	{
@@ -42,7 +42,7 @@ static int	*xpm_to_img(t_data, *data, char *path)
 
 void	init_textures(t_data *data)
 {
-	data->textures = ft_calloc(5, sizeof * data->textures);//check here if there is leak
+	data->textures = ft_calloc(5, sizeof * data->textures);//check here for leak
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	data->textures[NORTH] = xpm_to_img(data, data->textinfo.north);

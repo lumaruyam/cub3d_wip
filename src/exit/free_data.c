@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 20:43:28 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/28 18:48:18 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:00:48 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	free_textinfo(t_textinfo *textures)
 {
 	if (textures->north)
 		free(textures->north);
-	if (trextures->south)
+	if (textures->south)
 		free(textures->south);
 	if (textures->west)
 		free(textures->west);
@@ -41,14 +41,14 @@ static void	free_textinfo(t_textinfo *textures)
 		free(textures->east);
 	if (textures->floor)
 		free(textures->floor);
-	if (terxtures->ceiling)
+	if (textures->ceiling)
 		free(textures->ceiling);
 }
 
 static void	free_map(t_data *data)
 {
 	if (data->mapinfo.fd > 0)
-		close(data->mapinfo.fd)
+		close(data->mapinfo.fd);
 	if (data->mapinfo.file)
 		free_tab((void **)data->mapinfo.file);
 	if (data->map)
@@ -61,7 +61,7 @@ int	free_data(t_data *data)
 		free_tab((void **)data->textures);
 	if (data->texture_pixels)
 		free_tab((void **)data->texture_pixels);
-	free_textinfo(&data->texinfo);
+	free_textinfo(&data->textinfo);
 	free_map(data);
 	return (FAILURE);
 }

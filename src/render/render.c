@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:25:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2025/12/28 18:04:01 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 15:57:03 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static void	set_frame_image_pixel(t_data *data, t_img *image, int x, int y)
 	if (data->texture_pixels[y][x] > 0)
 		set_image_pixel(image, x, y, data->texture_pixels[y][x]);
 	else if (y < data->win_height / 2)
-		set_image_pixel(image, x, y, data->texinfo.hex_deiling);
+		set_image_pixel(image, x, y, data->textinfo.hex_ceiling);
 	else if (y < data->win_height - 1)
-		set_image_pixel(image, x, y, data->texinfo.hex_floor);
+		set_image_pixel(image, x, y, data->textinfo.hex_floor);
 }
 
 static void	render_frame(t_data *data)
@@ -42,7 +42,7 @@ static void	render_frame(t_data *data)
 	while (y < data->win_height)
 	{
 		x = 0;
-		while (x < data->width)
+		while (x < data->win_width)
 		{
 			set_frame_image_pixel(data, &image, x, y);
 			x++;
@@ -68,6 +68,6 @@ int	render(t_data *data)
 	data->player.has_moved += move_player(data);
 	if (data->player.has_moved == 0)
 		return (0);
-	render_images(data)
+	render_images(data);
 	return (0);
 }

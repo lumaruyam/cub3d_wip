@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/09 20:08:06 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:06:57 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@
 # define DEBUG_MSG 0
 # endif
 
-// # ifndef BONUS Uncomment here when we added bonus
-// # define BONUS 1
-// # endif
+# ifndef BONUS /*Uncomment here when we added bonus*/
+# define BONUS 0
+# endif
 
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
@@ -63,6 +63,20 @@ enum	e_output
 	CONTINUE = 4
 };
 
+enum	e_texture_index
+{
+	NORTH = 0,
+	SOUTH = 1,
+	EAST = 2,
+	WEST = 3
+};
+
+/* ---------------------------------------------------------------------------*
+								COLORS
+ --------------------------------------------------------------------------- */
+
+ # define RESET	"\e[0m"
+ # define RED	"\e[31m"
 
 /* ---------------------------------------------------------------------------*
 								STRUCTURES

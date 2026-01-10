@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:28:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/09 20:06:13 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:16:06 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ void	init_texture_pixels(t_data *data)
 	if (data->texture_pixels)
 		free_tab((void **)data->texture_pixels);
 	data->texture_pixels = ft_calloc(data->win_height + 1,
-			sizeof * data->texture_pizels);
+			sizeof * data->texture_pixels);
 	if (!data->texture_pixels)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	i = 0;
 	while (i < data->win_height)
 	{
 		data->texture_pixels[i] = ft_calloc(data->win_width + 1,
-			size3of * data->texture_pixels);
-		if (!data->texture_pixcels[i])
+				sizeof * data->texture_pixels);
+		if (!data->texture_pixels[i])
 			clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 		i++;
 	}
 }
 
-static void	get_textutre_index(t_data *data, t_ray *ray)
+static void	get_texture_index(t_data *data, t_ray *ray)
 {
 	if (ray->side == 0)
 	{
@@ -45,9 +45,9 @@ static void	get_textutre_index(t_data *data, t_ray *ray)
 	else
 	{
 		if (ray->dir_y > 0)
-			data->texinfo.index = SOUTH;
+			data->textinfo.index = SOUTH;
 		else
-			data->texinfo.index = NORTH;
+			data->textinfo.index = NORTH;
 	}
 }
 
@@ -63,7 +63,7 @@ void	update_texture_pixels(t_data *data, t_textinfo *tex, t_ray *ray, int x)
 		tex->x = tex->size - tex->x - 1;
 	tex->step = 1.0 * tex->size / ray->line_height;
 	tex->pos = (1.0 * tex->size - ray->line_height / 2
-		+ ray->line_height / 2) * tex->step;
+			+ ray->line_height / 2) * tex->step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)
 	{
