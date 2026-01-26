@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:11:41 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:17:11 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:10:52 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	raycasting(t_player *player, t_data *data)
 		set_dda(&ray, player);
 		perform_dda(data, &ray);
 		calc_line_height(&ray, data, player);
-		update_texture_pixels(data, &data->textinfo, &ray, x);
+		update_texture_pixels(data, &data->texinfo, &ray, x);
 		x++;
 	}
 	return (SUCCESS);

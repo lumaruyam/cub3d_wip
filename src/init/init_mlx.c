@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/15 19:29:58 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:13:06 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:09:45 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	init_img(t_data *data, t_img *image, int width, int height)
 void	init_texture_img(t_data *data, t_img *image, char *path)
 {
 	init_img_clean(image);
-	image->img = mlx_xpm_file_to_image(data->mlx, path, &data->textinfo.size,
-			&data->textinfo.size);
+	image->img = mlx_xpm_file_to_image(data->mlx, path, &data->texinfo.size,
+			&data->texinfo.size);
 	if (image->img == NULL)
 		clean_exit(data, err_msg("mlx", ERR_MLX_IMG, 1));
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits,

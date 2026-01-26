@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:28:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:16:06 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:11:51 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,20 @@ static void	get_texture_index(t_data *data, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
-			data->textinfo.index = WEST;
+			data->texinfo.index = WEST;
 		else
-			data->textinfo.index = EAST;
+			data->texinfo.index = EAST;
 	}
 	else
 	{
 		if (ray->dir_y > 0)
-			data->textinfo.index = SOUTH;
+			data->texinfo.index = SOUTH;
 		else
-			data->textinfo.index = NORTH;
+			data->texinfo.index = NORTH;
 	}
 }
 
-void	update_texture_pixels(t_data *data, t_textinfo *tex, t_ray *ray, int x)
+void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 {
 	int	y;
 	int	color;

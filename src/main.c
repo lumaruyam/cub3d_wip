@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 20:22:05 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/09 19:58:29 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:14:03 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	parse_args(t_data *data, char **av)
 		return (free_data(data)); //parsing
 	if (valid_map(data, data->map) == FAILURE)
 		return (free_data(data));
-	if (valid_texture(data, &data->textinfo) == FAILURE) //parsing
+	if (valid_texture(data, &data->texinfo) == FAILURE) //parsing
 		return (free_data(data));
 	init_player_direction(data);//exec->DONE
 	// if (DEBUG_MSG)
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (err_msg("Usage", ERR_USAGE, 1));
-	init_data(&data); // parsing
+	init_data(&data); // exec->DONE
 	if (parse_args(&data, av) != 0)
 		return (1);
 	init_mlx(&data); // exec->DONE

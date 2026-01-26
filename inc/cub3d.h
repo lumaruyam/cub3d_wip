@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:06:57 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:08:41 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
+
+# define TEX_SIZE 64
 
 # define MOVESPEED 0.0125
 # define ROTSPEED 0.015
@@ -91,7 +93,7 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
-typedef struct	s_textinfo
+typedef struct	s_texinfo
 {
 	char			*north;
 	char			*south;
@@ -107,7 +109,7 @@ typedef struct	s_textinfo
 	int				pos;
 	int				x;
 	int				y;
-}	t_textinfo;
+}	t_texinfo;
 
 typedef struct	s_minimap
 {
@@ -179,7 +181,7 @@ typedef struct	s_data
 	t_ray		ray;
 	int			**texture_pixels;
 	int			**textures;
-	t_textinfo	textinfo;
+	t_texinfo	texinfo;
 	t_img		minimap;
 }	t_data;
 
@@ -188,10 +190,12 @@ typedef struct	s_data
  --------------------------------------------------------------------------- */
 
 /*init*/
+void	init_data(t_data *data);
 void	init_ray(t_ray *ray);
 void	init_img_clean(t_img *img);
 
 void	init_textures(t_data *data);
+void	init_texinfo(t_texinfo *textures);
 
 void	init_mlx(t_data *data);
 void	init_texture_img(t_data *data, t_img *image, char *path);
@@ -203,7 +207,7 @@ void	render_images(t_data *data);
 void	set_image_pixel(t_img *image, int x, int y, int color);
 
 /*render/texture*/
-void	update_texture_pixels(t_data *data, t_textinfo *tex, t_ray *ray, int x);
+void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x);
 void	init_texture_pixels(t_data *data);
 
 /*render/raycasting*/

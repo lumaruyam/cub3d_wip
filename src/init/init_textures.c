@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 19:37:58 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:12:18 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:10:33 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ static int	*xpm_to_img(t_data *data, char *path)
 
 	init_texture_img(data, &tmp, path);
 	buffer = ft_calloc(1,
-			sizeof * buffer * data->textinfo.size * data->textinfo.size);
+			sizeof * buffer * data->texinfo.size * data->texinfo.size);
 	if (buffer)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	y = 0;
-	while (y < data->textinfo.size)
+	while (y < data->texinfo.size)
 	{
 		x = 0;
-		while (x < data->textinfo.size)
+		while (x < data->texinfo.size)
 		{
-			buffer[y * data->textinfo.size + x]
-				= tmp.addr[y * data->textinfo.size + x];
+			buffer[y * data->texinfo.size + x]
+				= tmp.addr[y * data->texinfo.size + x];
 			++x;
 		}
 		y++;
@@ -45,8 +45,25 @@ void	init_textures(t_data *data)
 	data->textures = ft_calloc(5, sizeof * data->textures);//check here for leak
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
-	data->textures[NORTH] = xpm_to_img(data, data->textinfo.north);
-	data->textures[SOUTH] = xpm_to_img(data, data->textinfo.south);
-	data->textures[EAST] = xpm_to_img(data, data->textinfo.east);
-	data->textures[WEST] = xpm_to_img(data, data->textinfo.west);
+	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
+	data->textures[SOUTH] = xpm_to_img(data, data->texinfo.south);
+	data->textures[EAST] = xpm_to_img(data, data->texinfo.east);
+	data->textures[WEST] = xpm_to_img(data, data->texinfo.west);
+}
+
+void	init_texinfo(t_texinfo *textures)
+{
+	textures->north = NULL;
+	textures->south = NULL;
+	textures->west = NULL;
+	textures->east = NULL;
+	textures->floor = 0;
+	textures->ceiling = 0;
+	textures->hex_floor = 0x0;
+	textures->hex_ceiling = 0x0;
+	textures->size = TEX_SIZE;
+	textures->step = 0.0;
+	textures->pos = 0.0;
+	textures->x = 0;
+	textures->y = 0;
 }

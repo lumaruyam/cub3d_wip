@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 20:43:28 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:00:48 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/01/26 21:12:11 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	free_tab(void **tab)
 	}
 }
 
-static void	free_textinfo(t_textinfo *textures)
+static void	free_texinfo(t_texinfo *textures)
 {
 	if (textures->north)
 		free(textures->north);
@@ -61,7 +61,7 @@ int	free_data(t_data *data)
 		free_tab((void **)data->textures);
 	if (data->texture_pixels)
 		free_tab((void **)data->texture_pixels);
-	free_textinfo(&data->textinfo);
+	free_texinfo(&data->texinfo);
 	free_map(data);
 	return (FAILURE);
 }
