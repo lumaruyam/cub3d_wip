@@ -4,7 +4,7 @@ NAME = cub3d
 # remove comment if we will do bonus
 # BONUS = 0
 
-CC = gcc
+CC = cc
 CFLAGS = -Werror -Wextra -Wall -g3
 
 # Minilibx
@@ -22,6 +22,8 @@ SRC =	init/init_mlx.c init/init_textures.c init/init.c \
 		move/input_handler.c move/player_dir.c move/player_move.c move/player_pos.c move/player_rotate.c \
 		render/raycasting.c render/render.c render/texture.c \
 		exit/exit.c exit/free_data.c \
+		parsing/check_file.c parsing/color_textures.c parsing/fil_data.c parsing/map_check.c \
+		parsing/parse_data.c parsing/parsing_utils1.c parsing/texture.c \
 		error.c utils.c main.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/26 21:08:41 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/02/28 17:24:27 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,28 @@
 # define ROTSPEED 0.015
 
 /*Error Messages*/
-# define ERR_USAGE "usage: ./cub3d <path/to/map.cub>"
+# define ERR_USAGE "./cub3d <path/to/map.cub>"
 # define ERR_MALLOC "Failed to allocate memory"
 # define ERR_MLX_START "Failed to start mlx"
 # define ERR_MLX_WIN "Failed to create mlx window"
 # define ERR_MLX_IMG "Failed to create mlx image"
+# define ERR_FILE_IS_DIR "Is a directory"
+# define ERR_FILE_NOT_CUB "File is not a .cub file"
+# define ERR_FILE_NOT_XPM "File is not a .xpm file"
+# define ERR_FLOOR_CEILING "Invalid floor/ceiling RGB color(s)"
+# define ERR_COLOR_FLOOR "Invalid floor RGB color"
+# define ERR_COLOR_CEILING "Invalid ceiling RGB color"
+# define ERR_INVALID_MAP "Map description is either wrong or incomplete"
+# define ERR_TEX_INVALID "Invalid texture(s)"
+# define ERR_INV_LETTER "Invalid character in map"
+# define ERR_NUM_PLAYER "Map has more than one player"
+# define ERR_NO_MAP "Map does not exist"
+# define ERR_MAP_NO_WALLS "has no walls"
+# define ERR_TEX_RGB_VAL "Invalid RGB value (min: 0, max: 255)"
+# define ERR_TEX_MISSING "Missing texture(s)"
+# define ERR_COLOR_MISSING "Missing color(s)"
+
+
 
 enum	e_output
 {
@@ -200,6 +217,18 @@ void	init_texinfo(t_texinfo *textures);
 void	init_mlx(t_data *data);
 void	init_texture_img(t_data *data, t_img *image, char *path);
 void	init_img(t_data *data, t_img *image, int width, int height);
+
+/*parsing*/
+void	parse_data(char *path, t_data *data);
+int		check_file(char *arg, bool cub);
+int		valid_texture(t_data *data, t_texinfo *textures);
+int		fil_data(t_data *data, char **map);
+int		map_ok(t_data *data, char **map);
+int		fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j);
+int		check_map_is_at_the_end(t_data *data);
+void	space_into_wall(char **map);
+int		is_void(char c);
+int		valid_texture(t_data *data, t_texinfo *textures);
 
 /*render*/
 int		render(t_data *data);
