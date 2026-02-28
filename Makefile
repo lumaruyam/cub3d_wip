@@ -23,7 +23,7 @@ SRC =	init/init_mlx.c init/init_textures.c init/init.c \
 		render/raycasting.c render/render.c render/texture.c \
 		exit/exit.c exit/free_data.c \
 		parsing/check_file.c parsing/color_textures.c parsing/fil_data.c parsing/map_check.c \
-		parsing/parse_data.c parsing/parsing_utils1.c parsing/texture.c \
+		parsing/parse_data.c parsing/parsing_utils1.c parsing/texture.c parsing/create_map.c \
 		error.c utils.c main.c
 SRCS = $(addprefix $(SRC_PATH), $(SRC))
 

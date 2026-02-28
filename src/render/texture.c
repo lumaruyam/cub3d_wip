@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:28:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/26 21:11:51 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/02/28 19:26:56 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void	update_texture_pixels(t_data *data, t_texinfo *tex, t_ray *ray, int x)
 
 	get_texture_index(data, ray);
 	tex->x = (int)(ray->wall_x * tex->size);
-	if ((ray->side == 0 && ray->dir_y > 0)
+	if ((ray->side == 0 && ray->dir_x < 0)
 		|| (ray->side == 1 && ray->dir_y > 0))
 		tex->x = tex->size - tex->x - 1;
 	tex->step = 1.0 * tex->size / ray->line_height;
-	tex->pos = (1.0 * tex->size - ray->line_height / 2
+	tex->pos = (ray->draw_start - data->win_height / 2
 			+ ray->line_height / 2) * tex->step;
 	y = ray->draw_start;
 	while (y < ray->draw_end)

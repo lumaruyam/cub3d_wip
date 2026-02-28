@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 19:37:58 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/26 21:10:33 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/02/28 18:42:20 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	*xpm_to_img(t_data *data, char *path)
 	init_texture_img(data, &tmp, path);
 	buffer = ft_calloc(1,
 			sizeof * buffer * data->texinfo.size * data->texinfo.size);
-	if (buffer)
+	if (!buffer)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	y = 0;
 	while (y < data->texinfo.size)

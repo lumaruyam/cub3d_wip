@@ -51,8 +51,8 @@ static int	info_no_9_13(t_data *data, char **map, int i, int j)
 		return (CONTINUE);
 	if (ft_isdigit(map[i][j]))
 	{
-		// if (create_map(data, map, i) == FAILURE) // bonus part
-		// 	return (err_msg(data->mapinfo.path, ERR_INVALID_MAP, FAILURE));
+		if (create_map(data, map, i) == FAILURE) // bonus part
+			return (err_msg(data->mapinfo.path, ERR_INVALID_MAP, FAILURE));
 		return (SUCCESS);
 	}
 	if (map[i][j + 1] && map[i][j + 1] != ' ' && map[i][j + 1] != '\t')
