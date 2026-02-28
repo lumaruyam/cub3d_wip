@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 21:11:41 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/26 21:10:52 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/02/28 21:17:42 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	init_raycasting(int x, t_ray *ray, t_player *player)
 {
 	init_ray(ray);
-	ray->camera_x = 2 * x / (double)WIN_WIDTH -1;
+	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
 	ray->dir_x = player->dir_x + player->plane_x * ray->camera_x;
 	ray->dir_y = player->dir_y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos_x;

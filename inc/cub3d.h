@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/02/28 18:34:12 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/02/28 21:14:40 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,11 +122,29 @@ typedef struct	s_texinfo
 	unsigned long	hex_ceiling;
 	int				size;
 	int				index;
-	int				step;
-	int				pos;
+	double				step;
+	double				pos;
 	int				x;
 	int				y;
 }	t_texinfo;
+
+// typedef struct	s_texinfo
+// {
+// 	char			*north;
+// 	char			*south;
+// 	char			*west;
+// 	char			*east;
+// 	int				*floor;
+// 	int				*ceiling;
+// 	unsigned long	hex_floor;
+// 	unsigned long	hex_ceiling;
+// 	int				size;
+// 	int				index;
+// 	int				step;
+// 	int				pos;
+// 	int				x;
+// 	int				y;
+// }	t_texinfo;
 
 typedef struct	s_minimap
 {
