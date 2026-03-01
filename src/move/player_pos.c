@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 20:02:56 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 15:08:41 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/01 15:11:03 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,21 @@ static int	is_valid_pos_in_map(t_data *data, double x, double y)
 
 static int	is_valid_pos(t_data *data, double x, double y)
 {
-	if (!BONUS && is_valid_pos_in_map(data, x, y))
-		return (1);
-	if (BONUS && is_valid_pos_wall_collision(data, x, y))
-		return (1);
-	return (0);
+	if (!is_valid_pos_in_map(data, x, y))
+		return (0);
+	if (!is_valid_pos_wall_collision(data, x, y))
+		return (0);
+	return (1);
 }
+
+// static int	is_valid_pos(t_data *data, double x, double y) // use BONUS
+// {
+// 	if (!BONUS && is_valid_pos_in_map(data, x, y))
+// 		return (1);
+// 	if (BONUS && is_valid_pos_wall_collision(data, x, y))
+// 		return (1);
+// 	return (0);
+// }
 
 int	validate_move(t_data *data, double new_x, double new_y)
 {
