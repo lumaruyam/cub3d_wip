@@ -32,6 +32,6 @@ Change the map/example.cub to path/to/map.cub
 
 
 ## Resources
-- [Texture resources]: https://opengameart.org/textures/ : Wall texture resources
+- [Texture resources](https://opengameart.org/textures/) : Wall texture resources
 - [Lode's Raycasting Tutorial](https://lodev.org/cgtutor/raycasting.html) : Primary reference for the DDA raycasting algorithm
 - [MinilibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx) : MLX function reference
