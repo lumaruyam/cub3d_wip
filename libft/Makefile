@@ -6,7 +6,7 @@
 #    By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/09 16:04:43 by lulmaruy          #+#    #+#              #
-#    Updated: 2025/10/21 16:50:26 by lulmaruy         ###   ########.fr        #
+#    Updated: 2026/03/01 17:27:41 by lulmaruy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,12 +38,12 @@ B_OBJ = $(B_SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 bonus: $(OBJ) $(B_OBJ)
-	ar rc  $(NAME) $(OBJ) $(B_OBJ)
-	ranlib $(NAME)
+	@ar rc  $(NAME) $(OBJ) $(B_OBJ)
+	@ranlib $(NAME)
 
 %.o: %.c $(HEAD)
 	@$(CC) $(FLAGS) $(HEAD) -c $< -o $@

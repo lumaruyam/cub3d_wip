@@ -1,7 +1,7 @@
 
 NAME = cub3D
 
-# remove comment if we will do bonus
+# change to 1 if we will do bonus
 # BONUS = 0
 
 CC = cc
@@ -43,11 +43,11 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBFT) $(MLX) -lXext -lX11 -lm
 
 $(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
-	mkdir -p $(dir $(OBJS))
+	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(dir $(OBJS))
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 # 	$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
 
 $(LIBFT):
@@ -55,6 +55,8 @@ $(LIBFT):
 
 $(MLX):
 	@make -C $(MLX_PATH)
+
+bonus: all # comment here and comment out below if we will do bonus
 
 # bonus:
 # 	make all BONUS=1
@@ -66,8 +68,8 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME)
-	make -C $(LIBFT_PATH) fclean
+	@make -C $(LIBFT_PATH) fclean
 
 re: fclean all
 
-.PHONY: all re clean fclean
+.PHONY: all re clean fclean bonus
