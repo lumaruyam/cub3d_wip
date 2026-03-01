@@ -1,9 +1,6 @@
 
 NAME = cub3D
 
-# change to 1 if we will do bonus
-# BONUS = 0
-
 CC = cc
 CFLAGS = -Werror -Wextra -Wall -g3
 
@@ -48,7 +45,6 @@ $(OBJ_PATH):
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
-# 	$(CC) $(CFLAGS) -DBONUS=$(BONUS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX) -lXext -lX11 -lm
 
 $(LIBFT):
 	@make -C $(LIBFT_PATH)
@@ -56,10 +52,7 @@ $(LIBFT):
 $(MLX):
 	@make -C $(MLX_PATH)
 
-bonus: all # comment here and comment out below if we will do bonus
-
-# bonus:
-# 	make all BONUS=1
+bonus: all
 
 clean:
 	@$(RM) $(OBJ_PATH)
