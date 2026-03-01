@@ -36,4 +36,4 @@ Change the map/example.cub to path/to/map.cub
 - [Lode's Raycasting Tutorial](https://lodev.org/cgtutor/raycasting.html) : Primary reference for the DDA raycasting algorithm
 - [MinilibX Documentation](https://harm-smits.github.io/42docs/libs/minilibx) : MLX function reference
 
-**AI Usage**: LLM was used to assist with understanding the subject and mathmatics concepts and formatting the README.md
+**AI Usage**: LLMs were used to assist with conceptual understanding, mathematical principles, and formatting the README.md file.
