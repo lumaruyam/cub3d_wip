@@ -1,5 +1,5 @@
 
-NAME = cub3d
+NAME = cub3D
 
 # remove comment if we will do bonus
 # BONUS = 0

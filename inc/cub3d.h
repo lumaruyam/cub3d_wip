@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/02/28 21:14:40 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/01 15:19:42 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,8 @@ typedef struct	s_texinfo
 	unsigned long	hex_ceiling;
 	int				size;
 	int				index;
-	double				step;
-	double				pos;
+	double			step;
+	double			pos;
 	int				x;
 	int				y;
 }	t_texinfo;

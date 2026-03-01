@@ -31,6 +31,35 @@ void	space_into_wall(char **map) // 2
 	}
 }
 
+// static int	map_sign(t_data *data, char **map) // 1
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = -1;
+// 	data->player.dir = '0';
+// 	while (map[++i])
+// 	{
+// 		j = -1;
+// 		while (map[i][++j])
+// 		{
+// 			if (ft_strchr(" \t\r\v\f\n", map[i][j]))
+// 				continue ;
+// 			if (!ft_strchr("10NSEW", map[i][j]))
+// 				return (err_msg(data->mapinfo.path, ERR_INV_LETTER, FAILURE));
+// 			if (ft_strchr("NSEW", map[i][j]))
+// 			{
+// 				if (data->player.dir != '0')
+// 					return (err_msg(data->mapinfo.path, ERR_NUM_PLAYER, FAILURE));
+// 				data->player.dir = map[i][j];
+// 				data->player.pos_x = j + 0.5;
+// 				data->player.pos_y = i + 0.5;
+// 			}
+// 		}
+// 	}
+// 	return (SUCCESS);
+// }
+
 static int	map_sign(t_data *data, char **map) // 1
 {
 	int	i;
@@ -53,7 +82,8 @@ static int	map_sign(t_data *data, char **map) // 1
 					return (err_msg(data->mapinfo.path, ERR_NUM_PLAYER, FAILURE));
 				data->player.dir = map[i][j];
 				data->player.pos_x = j + 0.5;
-    				data->player.pos_y = i + 0.5;
+				data->player.pos_y = i + 0.5;
+				map[i][j] = '0'; // ← ADD THIS LINE
 			}
 		}
 	}
