@@ -15,7 +15,7 @@ static int	rgb_check(int *rgb)
 
 static unsigned long	convert_rgb_to_hex(int *rgb)
 {
-	return (((rgb[0] & 0xFF) << 16) // changed rgb_tab to rgb (28/02/2026)
+	return (((rgb[0] & 0xFF) << 16)
 		| ((rgb[1] & 0xFF) << 8)
 		| (rgb[2] & 0xFF));
 }

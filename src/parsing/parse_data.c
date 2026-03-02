@@ -21,7 +21,6 @@ static int	count_lines(char *path)
 	return (count);
 }
 
-
 static void	fill_file_array(t_data *data)
 {
 	int		i;
@@ -42,20 +41,18 @@ void	parse_data(char *path, t_data *data)
 {
 	data->mapinfo.path = path;
 	data->mapinfo.line_count = count_lines(path);
-
 	if (data->mapinfo.line_count < 0)
 	{
 		err_msg(path, strerror(errno), FAILURE);
 		return ;
 	}
-
-	data->mapinfo.file = ft_calloc(data->mapinfo.line_count + 1, sizeof(char *));
+	data->mapinfo.file = ft_calloc(data->mapinfo.line_count + 1,
+			sizeof(char *));
 	if (!data->mapinfo.file)
 	{
 		err_msg(NULL, ERR_MALLOC, FAILURE);
 		return ;
 	}
-
 	data->mapinfo.fd = open(path, O_RDONLY);
 	if (data->mapinfo.fd < 0)
 	{
@@ -64,7 +61,6 @@ void	parse_data(char *path, t_data *data)
 		data->mapinfo.file = NULL;
 		return ;
 	}
-
 	fill_file_array(data);
 	close(data->mapinfo.fd);
 }

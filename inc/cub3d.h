@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/03/01 15:19:42 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/02 20:31:30 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,16 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-
 /* ---------------------------------------------------------------------------*
 								MACROS
  --------------------------------------------------------------------------- */
 
 # ifndef DEBUG_MSG
-# define DEBUG_MSG 0
+#  define DEBUG_MSG 0
 # endif
 
-# ifndef BONUS /*Uncomment here when we added bonus*/
-# define BONUS 0
+# ifndef BONUS
+#  define BONUS 0
 # endif
 
 # define WIN_WIDTH 640
@@ -64,14 +63,13 @@
 # define ERR_INVALID_MAP "Map description is either wrong or incomplete"
 # define ERR_TEX_INVALID "Invalid texture(s)"
 # define ERR_INV_LETTER "Invalid character in map"
-# define ERR_NUM_PLAYER "Map has more than one player"
+# define ERR_NB_PLYR "Map has more than one player"
 # define ERR_NO_MAP "Map does not exist"
 # define ERR_MAP_NO_WALLS "has no walls"
 # define ERR_TEX_RGB_VAL "Invalid RGB value (min: 0, max: 255)"
 # define ERR_TEX_MISSING "Missing texture(s)"
 # define ERR_COLOR_MISSING "Missing color(s)"
-
-
+# define ERR_NO_CLOSE "Map not closed"
 
 enum	e_output
 {
@@ -94,14 +92,14 @@ enum	e_texture_index
 								COLORS
  --------------------------------------------------------------------------- */
 
- # define RESET	"\e[0m"
- # define RED	"\e[31m"
+# define RESET	"\e[0m"
+# define RED	"\e[31m"
 
 /* ---------------------------------------------------------------------------*
 								STRUCTURES
  --------------------------------------------------------------------------- */
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img;
 	int		*addr;
@@ -110,7 +108,7 @@ typedef struct	s_img
 	int		endian;
 }	t_img;
 
-typedef struct	s_texinfo
+typedef struct s_texinfo
 {
 	char			*north;
 	char			*south;
@@ -128,25 +126,7 @@ typedef struct	s_texinfo
 	int				y;
 }	t_texinfo;
 
-// typedef struct	s_texinfo
-// {
-// 	char			*north;
-// 	char			*south;
-// 	char			*west;
-// 	char			*east;
-// 	int				*floor;
-// 	int				*ceiling;
-// 	unsigned long	hex_floor;
-// 	unsigned long	hex_ceiling;
-// 	int				size;
-// 	int				index;
-// 	int				step;
-// 	int				pos;
-// 	int				x;
-// 	int				y;
-// }	t_texinfo;
-
-typedef struct	s_minimap
+typedef struct s_minimap
 {
 	char	**map;
 	t_img	*img;
@@ -157,7 +137,7 @@ typedef struct	s_minimap
 	int		tile_size;
 }	t_minimap;
 
-typedef struct	s_mapinfo
+typedef struct s_mapinfo
 {
 	int		fd;
 	int		line_count;
@@ -168,7 +148,7 @@ typedef struct	s_mapinfo
 	int		index_end_of_map;
 }	t_mapinfo;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	double	camera_x;
 	double	dir_x;
@@ -189,7 +169,7 @@ typedef struct	s_ray
 	int		draw_end;
 }	t_ray;
 
-typedef struct	s_player
+typedef struct s_player
 {
 	char	dir;
 	double	pos_x;
@@ -204,7 +184,7 @@ typedef struct	s_player
 	int		rotate;
 }	t_player;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
@@ -242,10 +222,10 @@ int		check_file(char *arg, bool cub);
 int		valid_texture(t_data *data, t_texinfo *textures);
 int		fil_data(t_data *data, char **map);
 int		map_ok(t_data *data, char **map);
-int		fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j);
+int		fill_color_tex(t_data *data, t_texinfo *textures, char *line, int j);
 int		check_map_is_at_the_end(t_data *data);
 void	space_into_wall(char **map);
-int		is_void(char c);
+int		is_wp(char c);
 int		valid_texture(t_data *data, t_texinfo *textures);
 int		create_map(t_data *data, char **file, int i);
 

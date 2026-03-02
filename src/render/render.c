@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:25:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/02/28 20:32:51 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/02 19:46:12 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	render_images(t_data *data)
 	init_ray(&data->ray);
 	raycasting(&data->player, data);
 	render_frame(data);
-	// if (BONUS) // do later
-	// 	render_minimap(data);
 }
 
 int	render(t_data *data)

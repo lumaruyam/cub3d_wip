@@ -51,7 +51,7 @@ static int	info_no_9_13(t_data *data, char **map, int i, int j)
 		return (CONTINUE);
 	if (ft_isdigit(map[i][j]))
 	{
-		if (create_map(data, map, i) == FAILURE) // bonus part
+		if (create_map(data, map, i) == FAILURE)
 			return (err_msg(data->mapinfo.path, ERR_INVALID_MAP, FAILURE));
 		return (SUCCESS);
 	}
@@ -61,7 +61,7 @@ static int	info_no_9_13(t_data *data, char **map, int i, int j)
 			return (err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE));
 		return (BREAK);
 	}
-	if (fill_color_textures(data, &data->texinfo, map[i], j) == ERR)
+	if (fill_color_tex(data, &data->texinfo, map[i], j) == ERR)
 		return (FAILURE);
 	return (BREAK);
 }

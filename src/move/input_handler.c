@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 20:38:33 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/03/01 21:23:54 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/02 19:45:23 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,29 +49,10 @@ static int	handle_key_release(int key, t_data *data)
 		data->player.rotate = 0;
 	return (0);
 }
-//Bonus part
-// static void	wrap_mouse_position(t_data *data, int x, int y)
-// {
-// 	if (x > data->win_width - DIST_EDGE_MOUSE_WRAP)
-// 	{
-// 		x = DIST_EDGE_MOUSE_WRAP;
-
-// 	}
-// }
-
-// static int	mouse_move_handler(int x, int y, t_data *data)
-// {
-// 	static int	old_x = WIN_WIDTH / 2;
-
-// 	wrap_mouse_position(data, x, y);
-// }
 
 void	listen_for_input(t_data *data)
 {
 	mlx_hook(data->win, ClientMessage, NoEventMask, quit_cub3d, data);
 	mlx_hook(data->win, KeyPress, KeyPressMask, handle_key_press, data);
 	mlx_hook(data->win, KeyRelease, KeyReleaseMask, handle_key_release, data);
-	// if (BONUS)
-	// 	mlx_hook(data->win, MotionNotify, PointerMotionMask,
-	// 		mouse_move_handler, data);
 }

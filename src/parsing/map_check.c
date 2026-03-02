@@ -79,20 +79,20 @@ static int	map_sign(t_data *data, char **map) // 1
 			if (ft_strchr("NSEW", map[i][j]))
 			{
 				if (data->player.dir != '0')
-					return (err_msg(data->mapinfo.path, ERR_NUM_PLAYER, FAILURE));
+					return (err_msg(data->mapinfo.path, ERR_NB_PLYR, FAILURE));
 				data->player.dir = map[i][j];
 				data->player.pos_x = j + 0.5;
 				data->player.pos_y = i + 0.5;
-				map[i][j] = '0'; // ← ADD THIS LINE
+				map[i][j] = '0';
 			}
 		}
 	}
 	return (SUCCESS);
 }
 
-static int	check_map(t_data *data, char **map) //3
+static int	check_map(t_data *data, char **map) // 3
 {
-	size_t	i; // changed from int because it's size_t (28/02/2026)
+	size_t	i;
 	size_t	j;
 
 	if (data->player.dir == '0')
@@ -106,11 +106,11 @@ static int	check_map(t_data *data, char **map) //3
 			if (map[i][j] == '0' || ft_strchr("NSEW", map[i][j]))
 			{
 				if (i == 0 || map[i + 1] == NULL || j == 0)
-					return (err_msg(data->mapinfo.path, "Map not closed", FAILURE));
-				if (is_void(map[i][j - 1]) || is_void(map[i][j + 1]) ||
-					j >= (size_t)ft_strlen(map[i - 1]) || is_void(map[i - 1][j]) ||
-					j >= (size_t)ft_strlen(map[i + 1]) || is_void(map[i + 1][j]))
-					return (err_msg(data->mapinfo.path, "Map not closed", FAILURE));
+					return (err_msg(data->mapinfo.path, ERR_NO_CLOSE, FAILURE));
+				if (is_wp(map[i][j - 1]) || is_wp(map[i][j + 1]) ||
+					j >= (size_t)ft_strlen(map[i - 1]) || is_wp(map[i - 1][j]) ||
+					j >= (size_t)ft_strlen(map[i + 1]) || is_wp(map[i + 1][j]))
+					return (err_msg(data->mapinfo.path, ERR_NO_CLOSE, FAILURE));
 			}
 			j++;
 		}
@@ -148,7 +148,7 @@ static int	check_map(t_data *data, char **map) //3
 // 	return (SUCCESS);
 // }
 
-int	check_map_is_at_the_end(t_data *data) //4
+int	check_map_is_at_the_end(t_data *data)
 {
 	int	i;
 	int	j;
@@ -161,7 +161,7 @@ int	check_map_is_at_the_end(t_data *data) //4
 		{
 			if (!ft_strchr(" \t\r\v\f\n", data->mapinfo.file[i][j]))
 				return (err_msg(data->mapinfo.path,
-					"Unexpected data after map end", FAILURE));
+						"Unexpected data after map end", FAILURE));
 			j++;
 		}
 		i++;
@@ -169,18 +169,18 @@ int	check_map_is_at_the_end(t_data *data) //4
 	return (SUCCESS);
 }
 
-int map_ok(t_data *data, char **map)
+int	map_ok(t_data *data, char **map)
 {
 	if (!data->map)
-		return(err_msg(data->mapinfo.path, ERR_NO_MAP, FAILURE));
+		return (err_msg(data->mapinfo.path, ERR_NO_MAP, FAILURE));
 	if (data->mapinfo.height < 3)
-		return(err_msg(data->mapinfo.path, ERR_MAP_NO_WALLS, FAILURE));
+		return (err_msg(data->mapinfo.path, ERR_MAP_NO_WALLS, FAILURE));
 	if (map_sign(data, map) == FAILURE)
-		return(FAILURE);
+		return (FAILURE);
 	space_into_wall(map);
 	if (check_map(data, map) == FAILURE)
-		return(FAILURE);
+		return (FAILURE);
 	if (check_map_is_at_the_end(data) == FAILURE)
-		return(FAILURE);
-	return(SUCCESS);
+		return (FAILURE);
+	return (SUCCESS);
 }

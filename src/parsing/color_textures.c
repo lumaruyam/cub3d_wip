@@ -54,7 +54,7 @@ static int	*set_rgb_colors(char *line)
 	return (copy_into_rgb_array(rgb_to_convert, rgb));
 }
 
-int	fill_color_textures(t_data *data, t_texinfo *textures, char *line, int j)
+int	fill_color_tex(t_data *data, t_texinfo *textures, char *line, int j)
 {
 	if (line[j + 1] && line[j + 1] != ' ' && line[j + 1] != '\t')
 		return (err_msg(data->mapinfo.path, ERR_FLOOR_CEILING, ERR));

@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/14 19:37:58 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/02/28 21:09:35 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/02 19:39:35 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	*xpm_to_img(t_data *data, char *path)
 
 void	init_textures(t_data *data)
 {
-	data->textures = ft_calloc(5, sizeof * data->textures);//check here for leak
+	data->textures = ft_calloc(5, sizeof * data->textures);
 	if (!data->textures)
 		clean_exit(data, err_msg(NULL, ERR_MALLOC, 1));
 	data->textures[NORTH] = xpm_to_img(data, data->texinfo.north);
