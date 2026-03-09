@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 21:19:06 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/10 16:14:59 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/09 22:14:59 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static void	init_player_east_west(t_player *player)
 		player->dir_x = -1;
 		player->dir_y = 0;
 		player->plane_x = 0;
-		player->plane_y = -0.66;
+		player->plane_y = 0.66;
 	}
 	else if (player->dir == 'E')
 	{
 		player->dir_x = 1;
 		player->dir_y = 0;
 		player->plane_x = 0;
-		player->plane_y = 0.66;
+		player->plane_y = -0.66;
 	}
 	else
 		return ;
