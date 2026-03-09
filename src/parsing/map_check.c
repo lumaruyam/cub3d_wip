@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: niconguy <niconguy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/07 20:22:05 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/01/19 17:01:15 by marvin           ###   ########.fr       */
+/*   Created: 2026/03/09 19:59:15 by niconguy          #+#    #+#             */
+/*   Updated: 2026/03/09 19:59:15 by niconguy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	space_into_wall(char **map) // 2
+void	space_into_wall(char **map)
 {
 	int	i;
 	int	j;
@@ -31,36 +31,7 @@ void	space_into_wall(char **map) // 2
 	}
 }
 
-// static int	map_sign(t_data *data, char **map) // 1
-// {
-// 	int	i;
-// 	int	j;
-
-// 	i = -1;
-// 	data->player.dir = '0';
-// 	while (map[++i])
-// 	{
-// 		j = -1;
-// 		while (map[i][++j])
-// 		{
-// 			if (ft_strchr(" \t\r\v\f\n", map[i][j]))
-// 				continue ;
-// 			if (!ft_strchr("10NSEW", map[i][j]))
-// 				return (err_msg(data->mapinfo.path, ERR_INV_LETTER, FAILURE));
-// 			if (ft_strchr("NSEW", map[i][j]))
-// 			{
-// 				if (data->player.dir != '0')
-// 					return (err_msg(data->mapinfo.path, ERR_NUM_PLAYER, FAILURE));
-// 				data->player.dir = map[i][j];
-// 				data->player.pos_x = j + 0.5;
-// 				data->player.pos_y = i + 0.5;
-// 			}
-// 		}
-// 	}
-// 	return (SUCCESS);
-// }
-
-static int	map_sign(t_data *data, char **map) // 1
+static int	map_sign(t_data *data, char **map)
 {
 	int	i;
 	int	j;
@@ -72,9 +43,7 @@ static int	map_sign(t_data *data, char **map) // 1
 		j = -1;
 		while (map[i][++j])
 		{
-			if (ft_strchr(" \t\r\v\f\n", map[i][j]))
-				continue ;
-			if (!ft_strchr("10NSEW", map[i][j]))
+			if (!ft_strchr(" \t\r\v\f\n10NSEW", map[i][j]))
 				return (err_msg(data->mapinfo.path, ERR_INV_LETTER, FAILURE));
 			if (ft_strchr("NSEW", map[i][j]))
 			{
@@ -90,63 +59,30 @@ static int	map_sign(t_data *data, char **map) // 1
 	return (SUCCESS);
 }
 
-static int	check_map(t_data *data, char **map) // 3
+static int	check_map(t_data *data, char **map)
 {
 	size_t	i;
 	size_t	j;
 
 	if (data->player.dir == '0')
 		return (err_msg(data->mapinfo.path, "Missing player", FAILURE));
-	i = 0;
-	while (map[i])
+	i = -1;
+	while (map[++i])
 	{
-		j = 0;
-		while (map[i][j])
+		j = -1;
+		while (map[i][++j])
 		{
-			if (map[i][j] == '0' || ft_strchr("NSEW", map[i][j]))
-			{
-				if (i == 0 || map[i + 1] == NULL || j == 0)
-					return (err_msg(data->mapinfo.path, ERR_NO_CLOSE, FAILURE));
-				if (is_wp(map[i][j - 1]) || is_wp(map[i][j + 1]) ||
-					j >= (size_t)ft_strlen(map[i - 1]) || is_wp(map[i - 1][j]) ||
-					j >= (size_t)ft_strlen(map[i + 1]) || is_wp(map[i + 1][j]))
-					return (err_msg(data->mapinfo.path, ERR_NO_CLOSE, FAILURE));
-			}
-			j++;
+			if (map[i][j] != '0' && !ft_strchr("NSEW", map[i][j]))
+				continue ;
+			if (i == 0 || !map[i + 1] || j == 0
+				|| is_wp(map[i][j - 1]) || is_wp(map[i][j + 1])
+				|| j >= (size_t)ft_strlen(map[i - 1]) || is_wp(map[i - 1][j])
+				|| j >= (size_t)ft_strlen(map[i + 1]) || is_wp(map[i + 1][j]))
+				return (err_msg(data->mapinfo.path, ERR_NO_CLOSE, FAILURE));
 		}
-		i++;
 	}
 	return (SUCCESS);
 }
-
-// static int	check_map(t_data *data, char **map) //3
-// {
-// 	int	i;
-// 	int	j;
-
-// 	if (data->player.dir == '0')
-// 		return (err_msg(data->mapinfo.path, "Missing player", FAILURE));
-// 	i = 0;
-// 	while (map[i])
-// 	{
-// 		j = 0;
-// 		while (map[i][j])
-// 		{
-// 			if (map[i][j] == '0' || ft_strchr("NSEW", map[i][j]))
-// 			{
-// 				if (i == 0 || map[i + 1] == NULL || j == 0)
-// 					return (err_msg(data->mapinfo.path, "Map not closed", FAILURE));
-// 				if (is_void(map[i][j - 1]) || is_void(map[i][j + 1]) ||
-// 					(size_t)j >= ft_strlen(map[i - 1]) || is_void(map[i - 1][j]) ||
-// 					(size_t)j >= ft_strlen(map[i + 1]) || is_void(map[i + 1][j]))
-// 					return (err_msg(data->mapinfo.path, "Map not closed", FAILURE));
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 	}
-// 	return (SUCCESS);
-// }
 
 int	check_map_is_at_the_end(t_data *data)
 {
