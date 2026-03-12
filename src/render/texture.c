@@ -6,7 +6,7 @@
 /*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 19:28:10 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/02/28 21:20:39 by lulmaruy         ###   ########.fr       */
+/*   Updated: 2026/03/12 18:50:27 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ static void	get_texture_index(t_data *data, t_ray *ray)
 	if (ray->side == 0)
 	{
 		if (ray->dir_x < 0)
-			data->texinfo.index = WEST;
-		else
 			data->texinfo.index = EAST;
+		else
+			data->texinfo.index = WEST;
 	}
 	else
 	{
