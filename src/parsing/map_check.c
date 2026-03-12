@@ -110,7 +110,7 @@ int	map_ok(t_data *data, char **map)
 	if (!data->map)
 		return (err_msg(data->mapinfo.path, ERR_NO_MAP, FAILURE));
 	if (data->mapinfo.height < 3)
-		return (err_msg(data->mapinfo.path, ERR_MAP_NO_WALLS, FAILURE));
+		return (err_msg(data->mapinfo.path, ERR_NAME_TEXTCOL, FAILURE));
 	if (map_sign(data, map) == FAILURE)
 		return (FAILURE);
 	space_into_wall(map);

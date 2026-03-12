@@ -83,6 +83,6 @@ int	fill_color_tex(t_data *data, t_texinfo *textures, char *line, int j)
 			return (err_msg(data->mapinfo.path, ERR_COLOR_FLOOR, ERR));
 	}
 	else
-		return (err_msg(data->mapinfo.path, ERR_FLOOR_CEILING, ERR));
+		return (err_msg(data->mapinfo.path, ERR_NAME_TEXTCOL, ERR));
 	return (SUCCESS);
 }

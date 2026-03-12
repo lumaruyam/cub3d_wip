@@ -70,7 +70,7 @@ static int	info_no_9_13(t_data *data, char **map, int i, int j)
 	if (map[i][j + 1] && map[i][j + 1] != ' ' && map[i][j + 1] != '\t')
 	{
 		if (texture(&data->texinfo, map[i], j) == ERR)
-			return (err_msg(data->mapinfo.path, ERR_TEX_INVALID, FAILURE));
+			return (err_msg(data->mapinfo.path, ERR_NAME_TEXTCOL, FAILURE));
 		return (BREAK);
 	}
 	if (fill_color_tex(data, &data->texinfo, map[i], j) == ERR)
