@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static bool	no_digit(char *str)
+static bool	invalid_number(char *str)
 {
 	int	i;
 
@@ -21,11 +21,30 @@ static bool	no_digit(char *str)
 		return (true);
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]))
-			return (false);
+		if (!ft_isdigit(str[i]) && str[i] != ' '
+			&& str[i] != '\t' && str[i] != '\n')
+			return (true);
 		i++;
 	}
-	return (true);
+	return (false);
+}
+
+static int	get_value(char *str)
+{
+	char	clean[32];
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (str[i] && j < 31)
+	{
+		if (ft_isdigit(str[i]))
+			clean[j++] = str[i];
+		i++;
+	}
+	clean[j] = '\0';
+	return (ft_atoi(clean));
 }
 
 static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
@@ -35,8 +54,10 @@ static int	*copy_into_rgb_array(char **rgb_to_convert, int *rgb)
 	i = -1;
 	while (rgb_to_convert[++i])
 	{
-		rgb[i] = ft_atoi(rgb_to_convert[i]);
-		if (rgb[i] == -1 || no_digit(rgb_to_convert[i]))
+		if (invalid_number(rgb_to_convert[i]))
+			return (free_tab((void **)rgb_to_convert), free(rgb), NULL);
+		rgb[i] = get_value(rgb_to_convert[i]);
+		if (rgb[i] < 0 || rgb[i] > 255)
 			return (free_tab((void **)rgb_to_convert), free(rgb), NULL);
 	}
 	free_tab((void **)rgb_to_convert);
