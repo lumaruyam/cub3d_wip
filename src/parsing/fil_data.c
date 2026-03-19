@@ -67,15 +67,20 @@ static int	info_no_9_13(t_data *data, char **map, int i, int j)
 			return (err_msg(data->mapinfo.path, ERR_INVALID_MAP, FAILURE));
 		return (SUCCESS);
 	}
-	if (map[i][j + 1] && map[i][j + 1] != ' ' && map[i][j + 1] != '\t')
+	if (ft_strchr("NSEW", map[i][j]) && map[i][j + 1]
+		&& !ft_strchr(" \t", map[i][j + 1]))
 	{
 		if (texture(&data->texinfo, map[i], j) == ERR)
 			return (err_msg(data->mapinfo.path, ERR_NAME_TEXTCOL, FAILURE));
 		return (BREAK);
 	}
-	if (fill_color_tex(data, &data->texinfo, map[i], j) == ERR)
-		return (FAILURE);
-	return (BREAK);
+	if (ft_strchr("FC", map[i][j]))
+	{
+		if (fill_color_tex(data, &data->texinfo, map[i], j) == ERR)
+			return (FAILURE);
+		return (BREAK);
+	}
+	return (err_msg(data->mapinfo.path, ERR_NAME_TEXTCOL, FAILURE));
 }
 
 int	fil_data(t_data *data, char **map)

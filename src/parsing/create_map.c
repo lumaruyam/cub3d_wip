@@ -49,7 +49,7 @@ static int	extract_map_grid(t_mapinfo *mi, char **map, int idx)
 			j++;
 		}
 		while (j < mi->width)
-			map[i][j++] = '\0';
+			map[i][j++] = ' ';
 		map[i][mi->width] = '\0';
 		idx++;
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: niconguy <niconguy@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lulmaruy <lulmaruy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/07 18:57:54 by lulmaruy          #+#    #+#             */
-/*   Updated: 2026/03/12 16:45:52 by niconguy         ###   ########.fr       */
+/*   Updated: 2026/03/19 19:14:07 by lulmaruy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,6 +229,7 @@ void	space_into_wall(char **map);
 int		is_wp(char c);
 int		valid_texture(t_data *data, t_texinfo *textures);
 int		create_map(t_data *data, char **file, int i);
+int		is_open(char **map, int i, int j, int height);
 
 /*render*/
 int		render(t_data *data);

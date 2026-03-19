@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	space_into_wall(char **map)
+/*void	space_into_wall(char **map)
 {
 	int	i;
 	int	j;
@@ -29,7 +29,7 @@ void	space_into_wall(char **map)
 		}
 		i++;
 	}
-}
+}*/
 
 static int	map_sign(t_data *data, char **map)
 {
@@ -61,8 +61,8 @@ static int	map_sign(t_data *data, char **map)
 
 static int	check_map(t_data *data, char **map)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	j;
 
 	if (data->player.dir == '0')
 		return (err_msg(data->mapinfo.path, "Missing player", FAILURE));
@@ -72,12 +72,14 @@ static int	check_map(t_data *data, char **map)
 		j = -1;
 		while (map[i][++j])
 		{
-			if (map[i][j] != '0' && !ft_strchr("NSEW", map[i][j]))
+			if (map[i][j] != '0' && map[i][j] != '1')
 				continue ;
-			if (i == 0 || !map[i + 1] || j == 0
-				|| is_wp(map[i][j - 1]) || is_wp(map[i][j + 1])
-				|| j >= (size_t)ft_strlen(map[i - 1]) || is_wp(map[i - 1][j])
-				|| j >= (size_t)ft_strlen(map[i + 1]) || is_wp(map[i + 1][j]))
+			if (map[i][j] != '0')
+				continue ;
+			if (is_open(map, i - 1, j, data->mapinfo.height)
+				|| is_open(map, i + 1, j, data->mapinfo.height)
+				|| is_open(map, i, j - 1, data->mapinfo.height)
+				|| is_open(map, i, j + 1, data->mapinfo.height))
 				return (err_msg(data->mapinfo.path, ERR_NO_CLOSE, FAILURE));
 		}
 	}
@@ -110,10 +112,9 @@ int	map_ok(t_data *data, char **map)
 	if (!data->map)
 		return (err_msg(data->mapinfo.path, ERR_NO_MAP, FAILURE));
 	if (data->mapinfo.height < 3)
-		return (err_msg(data->mapinfo.path, ERR_NAME_TEXTCOL, FAILURE));
+		return (err_msg(data->mapinfo.path, "map too small", FAILURE));
 	if (map_sign(data, map) == FAILURE)
 		return (FAILURE);
-	space_into_wall(map);
 	if (check_map(data, map) == FAILURE)
 		return (FAILURE);
 	if (check_map_is_at_the_end(data) == FAILURE)
